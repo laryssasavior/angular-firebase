@@ -32,10 +32,9 @@ export class RegisterComponent {
     .subscribe(() => {
       this.router.navigateByUrl('/');
     },
-    error: (err) => {
-      this.errorMessage = err.erro
-    }
-      );
+    
+    (error) => { this.errorMessage = error.message; });
+
   }
 
 }
