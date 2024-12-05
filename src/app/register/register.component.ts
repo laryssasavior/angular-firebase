@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
 })
 export class RegisterComponent {
 
@@ -22,19 +23,17 @@ export class RegisterComponent {
     email: ['', Validators.required],
     password: ['', Validators.required],
   });
+
   errorMessage: string | null = null;
 
   onSubmit(): void {
-
     const rawForm = this.form.getRawValue();
     this.authService
     .register(rawForm.email, rawForm.username, rawForm.password)
     .subscribe(() => {
       this.router.navigateByUrl('/');
     },
-    
     (error) => { this.errorMessage = error.message; });
-
   }
 
 }

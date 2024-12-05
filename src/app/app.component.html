@@ -1,11 +1,12 @@
+<div class="navbar">
+  <div class="navbar-links">
+    <a routerLink="/login" class="navbar-link">Login</a>
+    <a routerLink="/register" class="navbar-link">Register</a>
+  </div>
 
-<div>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
-</div>
-
-<div>
-  <span (click)="logout()">Logout</span>
+  <div class="navbar-logout">
+    <span (click)="logout()" class="navbar-logout-button">Logout</span>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
